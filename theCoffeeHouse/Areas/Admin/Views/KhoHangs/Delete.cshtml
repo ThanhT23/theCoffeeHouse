@@ -1,0 +1,53 @@
+﻿@model theCoffeeHouse.Models.KhoHang
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+<style>
+    table {
+        text-align: center;
+        border-top: 1px solid black;
+    }
+</style>
+<h2>Xóa</h2>
+
+<h3>Bạn có chắc muốn xóa sản phẩm này không?</h3>
+
+<div>
+    <h4>KhoHang</h4>
+
+    <table class="table">
+        <tr>
+            <td>Mã Sản Phẩm</td>
+            <td>@Html.DisplayFor(model => model.SanPham.maSanPham)</td>
+        </tr>
+        <tr>
+            <td>Tên Sản Phẩm</td>
+            <td>@Html.DisplayFor(model => model.tenSanPham)</td>
+        </tr>
+        <tr>
+            <td>Số Lượng Tồn</td>
+            <td>            @Html.DisplayFor(model => model.soLuongTon)</td>
+        </tr>
+        <tr>
+            <td>Giá Nhập</td>
+            <td>@Html.DisplayFor(model => model.giaNhap)</td>
+        </tr>
+        <tr>
+            <td>Ghi Chú</td>
+            <td>@Html.DisplayFor(model => model.ghiChu)</td>
+        </tr>
+
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trờ về", "Index")
+        </div>
+    }
+</div>

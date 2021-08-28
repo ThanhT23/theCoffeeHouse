@@ -1,0 +1,216 @@
+﻿
+@{
+    ViewBag.Title = "Store";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Stores &ndash; The Coffee House</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .banner {
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 80px 0;
+            background-size: cover;
+            position: relative;
+            height: 300px;
+            margin-bottom: 30px;
+        }
+
+        .store_title {
+            text-align: center;
+        }
+
+            .store_title h2 {
+                font-size: 24px;
+                color: #fff;
+                margin-bottom: 15px;
+            }
+
+            .store_title a {
+                color: #fff;
+            }
+
+        .container {
+            margin-right: auto;
+            margin-left: auto;
+            padding-left: 15px;
+            padding-right: 15px;
+            width: 740px;
+        }
+
+        .row {
+            margin-left: -15px;
+            margin-right: -15px
+        }
+
+        .box-map {
+            position: relative;
+        }
+
+            .box-map .list_address {
+                max-height: 455px;
+                overflow-y: auto;
+            }
+
+            .box-map .list-address li {
+                display: flex;
+                align-items: center;
+                padding: 12px 15px;
+                background: #fff;
+                margin-bottom: 1px;
+                position: relative;
+            }
+
+                .box-map .list-address li .img-store {
+                    width: 16%;
+                }
+
+        img {
+            border: none;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .box-map .list-address li .info {
+            padding-left: 10px;
+        }
+
+        .activities_store {
+            padding: 60px 0;
+        }
+
+        .col-lg-12, .col-md-12, .col-sm-12, .col-xs-12 {
+            position: relative;
+            min-height: 1px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .activities_title {
+            text-align: center;
+            margin: 0 auto 50px;
+            max-width: 768px;
+        }
+
+            .activities_title h2 {
+                float: none;
+                color: #000;
+            }
+
+        h2 {
+            color: #EA8025;
+            margin-top: 0;
+            margin-bottom: 30px;
+            float: none;
+            text-align: center;
+            display: inline-block;
+            font-size: 32px;
+            font-weight: 700;
+            font-family: 'Bebas Neue','Lato', sans-serif;
+            text-transform: uppercase;
+            margin-left: 100px;
+        }
+
+        .word {
+            max-width: 768px;
+            margin: 0 auto;
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+
+        img {
+            border: none;
+            width: 5000px;
+            height: auto;
+        }
+    </style>
+
+</head>
+<body>
+    <main>
+        <div id="page_store">
+            <div class="banner" style="background-image:url(title.jpg)">
+                <div class="store_title">
+                    <div class="container">
+                        <div class="row">
+                            <div>
+                                <h2>Tìm kiếm chúng tôi</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31355.130239109007!2d106.71852625817534!3d10.781314200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175251b875ac825%3A0x7505db570e4b03e2!2sThe%20Coffee%20House%20-%20New%20City!5e0!3m2!1svi!2s!4v1629992320700!5m2!1svi!2s" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <section class="activities_store">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 pd-none">
+                            <div>
+                                <h2>TODAY AT THE COFFEE HOUSE</h2>
+                                <p style="margin-left: 100px;">Khám phá những điều kì diệu đang diễn ra tại The Coffee House mỗi ngày.</p>
+                                <br> <br>
+                            </div>
+                            <div>
+                                <div>
+                                    <div>
+                                        <div>
+                                            <img src="anh_mid1.jpg" alt="">
+                                            <h3>GHÉ "NHÀ" NGHE KỂ CHUYỆN CÀ PHÊ</h3>
+                                            <p>Có thể chỉ mất 30 giây để chuẩn bị một ly cà phê, nhưng để cây cà phê ra trái là thành quả 3 năm của rất nhiều người: những người nông dân, thợ rang, pha chế và những thành viên khác tại Nhà. Ly cà phê The Coffee House gửi đến bạn là một bức thư kể về hành trình của những hạt cà phê, giản dị mà đầy cảm hứng.</p>
+                                        </div>
+                                        <div>
+                                            <img src="anh_mid2.jpg" alt="">
+                                            <h3>LỜI MỞ ĐẦU CHO MUÔN VÀN SẺ CHIA</h3>
+                                            <p>
+                                                Uống cà phê đâu phải chỉ xoay quanh chuyện chiếc phin và những gì bên trong nó, mà còn là câu chuyện bên ngoài và xung quanh chiếc phin.<br>
+                                                <b>"Mình cà phê nhé"</b>, âu cũng là cách mở đầu những tâm tình, những câu chuyện sẻ chia bên tách cà phê với những người bạn cùng bàn.
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <img src="anh_mid3.jpg" alt="">
+                                            <h3>AI CŨNG CÓ MỘT THE COFFEE HOUSE ĐỂ TRỞ VỀ</h3>
+                                            <p>Nếu một ngày kia có điều gì làm bạn mỏi mệt quá, hãy nhớ The Coffee House - với không gian ấm cúng, những tách cà phê thơm nồng và những người bạn "cùng nhà" ân cần, niềm nở - là nơi mà bạn có thể trở về và tạm bỏ đi những bộn bề đằng sau cánh cửa.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div>
+                    <div>
+
+                        <div>
+                            <img src="anh1_mota.jpg" alt="banner store img 1">
+                            <div class="word"><div class="container"><div class="row"><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><p>The Coffee House 177 Lê Hồng Phong, Vũng Tàu</p></div></div></div></div>
+                        </div>
+
+                        <div>
+                            <img src="anh2_mota.jpg" alt="banner store img 2">
+                            <div class="word"><div class="container"><div class="row"><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><p>The Coffee House 487 Phan Văn Trị, Gò Vấp, TP.HCM</p></div></div></div></div>
+                        </div>
+
+                        <div>
+                            <img src="anh3_mota.jpg" alt="banner store img 3">
+                            <div class="word"><div class="container"><div class="row"><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><p>The Coffee House 40 Xuân La, Tây Hồ, Hà Nội</p></div></div></div></div>
+                        </div>
+
+                        <div>
+                            <img src="anh4_mota.jpg" alt="banner store img 4">
+                            <div class="word"><div class="container"><div class="row"><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><p>The Coffee House 119 Cầu Đất, Hải Phòng</p></div></div></div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+</body>
+</html>

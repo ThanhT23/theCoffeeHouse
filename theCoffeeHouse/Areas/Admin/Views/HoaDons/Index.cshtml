@@ -1,0 +1,95 @@
+﻿@model PagedList.IPagedList<theCoffeeHouse.Models.HoaDon>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{ ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml"; }
+<style>
+    table {
+        text-align: center
+    }
+</style>
+<h2>Danh sách đơn hàng</h2>
+<br />
+@using (Html.BeginForm())
+{
+<p>
+    Tìm hóa đơn: @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+    <input type="submit" value="Tìm" />
+</p>}
+<table class="table">
+    <tr>
+        <th>
+            STT
+        </th>
+        <th>
+            @Html.ActionLink("Mã đơn hàng", "Index", new { sortOrder = ViewBag.SapXepMaD, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Mã khách hàng", "Index", new { sortOrder = ViewBag.SapXepMaK, currentFilter = ViewBag.CurrentFilter })
+        </th>
+
+        <th>
+            Thời Gian
+        </th>
+        <th>
+            Tổng Số Lượng
+        </th>
+        <th>
+            Giảm Giá
+        </th>
+        <th>
+            @Html.ActionLink("Thành tiền", "Index", new { sortOrder = ViewBag.SapXepTien, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Thanh Toán
+        </th>
+        <th>Chức Năng</th>
+    </tr>
+
+    @{ var c = 0;
+        foreach (var item in Model)
+        {
+            c++;
+<tr>
+    <td>
+        @c
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.maHoaDon)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.maKhachHang)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ngayBan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tongSoLuong)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.giamGia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.thanhTien)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.hinhThucThanhToan)
+    </td>
+    <td>
+        <a href="@Url.Action("Edit", "HoaDons", new { id = item.maHoaDon })"><i class="mdi mdi-wrench-outline"></i></a>
+        <a href="@Url.Action("Details", "HoaDons", new { id = item.maHoaDon })"><i class="mdi mdi-open-in-new"></i></a>
+        <a href="@Url.Action("Delete", "HoaDons", new { id = item.maHoaDon })"><i class="mdi mdi-delete-outline"></i></a>
+    </td>
+</tr>
+ } }
+
+</table>
+<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new
+{
+    page,
+    sortOrder = ViewBag.CurrentSort,
+    currentFilter = ViewBag.CurrentFilter
+}))

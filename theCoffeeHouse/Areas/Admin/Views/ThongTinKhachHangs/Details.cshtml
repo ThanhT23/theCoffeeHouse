@@ -1,0 +1,65 @@
+﻿@model theCoffeeHouse.Models.ThongTinKhachHang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="bg-white border rounded" style="text-align:center" >
+    <div class="row no-gutters" style="">
+        <div class="col-lg-4 col-xl-3">
+            <div class="profile-content-left pt-5 pb-3 px-3 px-xl-5" style="width:1000px">
+                <div class="card text-center widget-profile px-0 border-0" style="position:relative; margin:0 auto; width: 300px;">
+                    <div class="card-img mx-auto rounded-circle">
+                        <img src="@Html.DisplayFor(model => model.hinhAnh)" alt="user image">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="py-2 text-dark">@Html.DisplayFor(model => model.tenKhachHang)</h4>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div style="margin-top:28px">
+        <table class="table">
+            <tr>
+                <td>Ngày Sinh</td>
+                <td>@Html.DisplayFor(model => model.ngaySinh)</td>
+            </tr>
+            <tr>
+                <td>Giới Tính</td>
+                <td>@Html.DisplayFor(model => model.gioiTinh)</td>
+            </tr>
+            <tr>
+                <td>Số Điện Thoại</td>
+                <td>@Html.DisplayFor(model => model.soDienThoai)</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td> @Html.DisplayFor(model => model.email)</td>
+            </tr>
+
+            <tr>
+                <td>Địa Chỉ</td>
+                <td>@Html.DisplayFor(model => model.diaChi)</td>
+            </tr>
+            <tr>
+                <td>Ghi Chú</td>
+                <td>@Html.DisplayFor(model => model.ghiChu)</td>
+            </tr>
+
+        </table>
+    </div>
+
+
+</div>
+
+
+
+
+<p>
+
+    @Html.ActionLink("Quay Về", "Index")
+</p>

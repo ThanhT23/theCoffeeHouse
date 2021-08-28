@@ -1,0 +1,74 @@
+﻿@model PagedList.IPagedList<theCoffeeHouse.Models.TaiKhoan>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{ ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml"; }
+
+<style>
+
+    table {
+        text-align: center;
+    }
+</style>
+<h2>Danh sách tài khoản</h2>
+<br />
+<p>
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+<br />
+@using (Html.BeginForm())
+{
+<p>
+    Tìm thông tin đăng nhập: @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+    <input type="submit" value="Tìm" />
+</p>}
+<table class="table">
+    <tr>
+        <th>
+            STT
+        </th>
+        <th>
+            @Html.ActionLink("Tên Đăng Nhập", "Index", new { sortOrder = ViewBag.SapXepTen, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Loại", "Index", new { sortOrder = ViewBag.SapXepLoai, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Chức Năng
+        </th>
+    </tr>
+
+    @{ var c = 0;
+        foreach (var item in Model)
+        {
+            c++;
+<tr>
+    <td>
+        @c
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tenDangNhap)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.loai)
+    </td>
+    <td>
+
+        <a href="@Url.Action("Edit", "TaiKhoans", new { id = item.tenDangNhap })"><i class="mdi mdi-wrench-outline"></i></a>
+        <a href="@Url.Action("Details", "TaiKhoans", new { id = item.tenDangNhap })"><i class="mdi mdi-open-in-new"></i></a>
+        <a href="@Url.Action("Delete", "TaiKhoans", new { id = item.tenDangNhap })"><i class="mdi mdi-delete-outline"></i></a>
+    </td>
+</tr>
+ } }
+
+
+</table>
+<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new
+{
+    page,
+    sortOrder = ViewBag.CurrentSort,
+    currentFilter = ViewBag.CurrentFilter
+}))

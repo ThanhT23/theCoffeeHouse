@@ -1,0 +1,156 @@
+﻿@model PagedList.IPagedList<theCoffeeHouse.Models.TinTuc>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+@{
+    var List = ViewBag.List as IEnumerable<theCoffeeHouse.Models.SanPham>;
+}
+@{
+    if (List != null)
+    {
+        <div class="product-area section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <h2>Kết Quả Tìm Kiếm Cho: <span style="color:#F7941D">@ViewBag.Name</span></h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="product-info">
+
+                            <div class="tab-content" id="myTabContent">
+                                <!-- Start Single Tab -->
+                                <div class="tab-pane fade show active" id="man" role="tabpanel">
+                                    <div class="tab-single">
+                                        <div class="row">
+                                            @foreach (var item in List)
+                                            {
+                                                <div class="col-xl-3 col-lg-4 col-md-4 col-12">
+                                                    <div class="single-product">
+                                                        <div class="product-img">
+                                                            <a href="@Url.Action("Detail", "Product", new { id = item.maSanPham})">
+                                                                <img class="default-img"
+                                                                     src="~/images/@item.hinhAnh" alt="">
+                                                            </a>
+                                                            <div class="button-head">
+                                                                <div class="product-action">
+                                                                    <a title="Compare" href="@Url.Action("QuickAddItem", "Cart", new { productId = item.maSanPham , quantity = 1 })">
+                                                                        <i class="fa fa-shopping-cart"></i><span>
+                                                                            Thêm Vào Giỏ
+                                                                        </span>
+                                                                    </a>
+                                                                    <a title="Wishlist" href="#">
+                                                                        <i class="fa fa-heart"></i><span>
+                                                                            Yêu Thích
+                                                                        </span>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-action-2">
+                                                                    <a title="Add to cart" href="@Url.Action("AddItem", "Cart", new { productId = item.maSanPham , quantity = 1 })">MUA NGAY</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-content">
+                                                            <h3><a href="product-details.html">@item.tenSanPham</a></h3>
+                                                            <div class="product-price">
+                                                                <span>@item.donGia</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+    else
+    {
+        <section class="shop-blog section" style="background-color:rgb(255, 246, 235)">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <h2 style="color: ff8c00;">Kết Quả Tìm Kiếm Cho Bài Viết <span style="color:#F7941D">@ViewBag.NewName</span></h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <!-- Start Single Blog  -->
+                            <div class="shop-single-blog" style="height: 450px;">
+                                <img src="~/images/@item.hinhAnh" alt="@Url.Action("Detail", "News", new { maTinTuc = item.maTinTuc})">
+                                <div class="content">
+                                    <p class="date">TIN TỨC</p>
+                                    <a href="@Url.Action("Detail", "News", new { maTinTuc = item.maTinTuc})" class="title" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">@item.tieuDe</a>
+                                    <p style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">@item.noiDung</p>
+                                    <a href="@Url.Action("Detail", "News", new { maTinTuc = item.maTinTuc})" class="more-btn">XEM THÊM</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+
+
+            </div>
+        </section>
+
+    }
+}
+<div id="pagination" class="text-center-eee" style="color:#F7941D; font-size:larger; ">
+
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    <div style="display:flex">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { type = "tin", search = ViewBag.NewName, page, @class = "page-class" }))
+    </div>
+   
+
+</div>
+<style>
+    .pagination {
+        display: flex;
+        padding-right: 5px;
+    }
+        .pagination li {
+            color: white;
+            padding: 15px;
+            background-color: #F7941D;
+        }
+        .pagination-container {
+           
+        }
+    .text-center-eee{
+        padding-left:590px;
+    }
+
+
+</style>
+
+
+<!-- End Product Area -->
+<!-- Start Shop Blog  -->

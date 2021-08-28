@@ -1,0 +1,240 @@
+﻿@model List<theCoffeeHouse.Models.CLASS.CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+@{
+
+    var ListProduct = ViewBag.Products as IEnumerable<theCoffeeHouse.Models.SanPham>;
+    var ListRelatedProduct = ViewBag.RelatedProducts as IEnumerable<theCoffeeHouse.Models.SanPham>;
+    var ListNewProducts = ViewBag.NewProducts as IEnumerable<theCoffeeHouse.Models.SanPham>;
+
+}
+
+
+
+<div class="main-cart">
+
+
+    <!-- Shopping Cart -->
+    <div class="shopping-cart section">
+
+        <form>
+            <div class="search-cart" style="display: flex;">
+                <button type="submit" class="searchButton" style="background-color:rgb(255, 255, 255);">
+                    <i class="fa fa-search" style="width:30px;height: 30px; font-size: 20px;padding-top: 4px;"></i>
+                </button>
+                <input class="search-cart-input" name="search" type="text" placeholder="Tìm Kiếm Sản Phẩm">
+            </div>
+        </form>
+        <div class="container">
+
+            <div class="row">
+                <div class="col-12">
+                    <!-- Shopping Summery -->
+                    <table class="table shopping-summery" style="width: 985px">
+                        <thead>
+                            <tr class="main-hading">
+                                <th>Ảnh</th>
+                                <th>Sản Phẩm</th>
+                                <th class="text-center">Giá</th>
+                                <th class="text-center">Số Lượng</th>
+                                <th class="text-center"><i class="fa fa-remove"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @{
+
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="image" data-title="No">
+                                            <img src="~/images/@item.Product.hinhAnh"
+                                                 alt="#">
+                                        </td>
+                                        <td class="product-des" data-title="Description">
+                                            <p class="product-name"><a href="#">@item.Product.tenSanPham</a></p>
+                                            <p class="product-des">
+                                                @item.Product.moTa
+                                            </p>
+                                        </td>
+                                        <td class="price" data-title="Price" style="width:121px"><span id="price">@item.Product.donGia Đ</span></td>
+                                        <td class="qty" data-title="Qty">
+                                            <!-- Input Order -->
+                                            <div class="input-group" style="width: 100px;">
+                                                <input id="quantity" class="quantity" type="number" min="0" value="@item.Quantity" style="width:50px;float:right" onchange="track(@item.Product.donGia, this.value, '@item.Product.maSanPham')">
+                                                <p id="@item.Product.maSanPham"></p>
+                                            </div>
+
+                                            <!--/ End Input Order -->
+                                        </td>
+
+                                        <td class="action" data-title="Remove">
+                                            <a href="@Url.Action("Delete", "Cart", new { delId = item.Product.maSanPham})">
+                                                <i class="fa fa-remove"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+
+                            }
+
+
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <!--/ End Shopping Summery -->
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <!--/ End Shopping Cart -->
+    <script>
+
+        function track(p, num, id) {
+
+            document.getElementById(id).innerHTML = num * p;
+        }
+        function mutiply(p1, p2) {
+            return p1 * p2;
+        }
+        function add(p1, p2) {
+
+            return p1 + p2;
+        }
+
+    </script>
+
+    <div>
+        <div class="cart-checkout">
+
+            <div class="container">
+                <div class="row">
+
+                    <div class="left">
+                        <div class="coupon">
+                            <form action="#" target="_blank">
+                                <input name="Coupon" placeholder="Nhập Mã Ưu Đãi Tại Đây">
+                                <button class="btn" style="font-size: 12px;">Áp Dụng</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="right" style="padding-top: 30px;">
+                        <div class="button5">
+                            <a href="@Url.Action("Paid", "Cart")" class="btnnew">XEM GIỎ HÀNG</a>
+                        </div>
+                        <table style="width:265px; font-weight: 700px;">
+                            <tr>
+                                <td style="text-align: left;">Cộng </td>
+                                <td id="add-result" style="text-align: right;"><span>@ViewBag.Total Đ</span></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;">Vận Chuyển</td>
+                                <td id="add-result" style="text-align: right;"><span>@ViewBag.Ship Đ</span></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;">Giảm Giá</td>
+                                <td id="add-result" style="text-align: right;"><span>10000 Đ</span></td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <div class="" style="padding-top: 20px; font-size: 15px;">
+                        <a href="#">
+                            <span style="float: left;font-weight:700">Tổng Cộng</span>
+                            <span style="float: right;"><b id="payment"></b>@ViewBag.TotalPrice Đ</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <!--/ End Total Amount -->
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="product-area most-popular section">
+    <div class="container">
+        <div class="row" style="height: 50px;">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>SẢN PHẨM TƯƠNG TỰ</h2>
+                </div>
+            </div>
+        </div>
+        <!-- <div>
+        <img src="images/shop.PNG" width="1928px" />
+    </div> -->
+        <div class="row">
+            <div class="col-12">
+                <div class="owl-carousel popular-slider">
+                    <!-- Start Single Product -->
+                    @foreach (var item in ListRelatedProduct)
+                    {
+                        <div class="single-product">
+                            <div class="product-img">
+                                <img src="~/images/@item.hinhAnh" style="width: 170px;">
+                            </div>
+                            <div class="product-content">
+                                <h3><a href="@Url.Action("Detail", "Product", new { id = item.maSanPham})">@item.tenSanPham</a></h3>
+                            </div>
+                        </div>
+                    }
+
+
+                    <!-- End Single Product -->
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row" style="height: 50px;">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>SẢN PHẨM MỚI</h2>
+                </div>
+            </div>
+        </div>
+        <!-- <div>
+        <img src="images/shop.PNG" width="1928px" />
+    </div> -->
+        <div class="row">
+            <div class="col-12">
+                <div class="owl-carousel popular-slider">
+                    <!-- Start Single Product -->
+                    @foreach (var item in ListNewProducts)
+                    {
+                        <div class="single-product">
+                            <div class="product-img">
+                                <img src="~/images/@item.hinhAnh" style="width: 170px;">
+                            </div>
+                            <div class="product-content">
+                                <h3><a href="@Url.Action("Detail", "Product", new { id = item.maSanPham})">@item.tenSanPham</a></h3>
+                            </div>
+                        </div>
+                    }
+
+
+                    <!-- End Single Product -->
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

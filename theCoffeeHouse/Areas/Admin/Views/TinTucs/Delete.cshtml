@@ -1,0 +1,51 @@
+﻿@model theCoffeeHouse.Models.TinTuc
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<style>
+    table{
+        text-align:center;
+    }
+</style>
+<h2>Xóa</h2>
+
+<h3>Bạn có chăc chắn muốn xóa tin tức này không?</h3>
+<div>
+ 
+    <table class="table">
+        <tr>
+            <td width="100px">Mã Tin Tức</td>
+            <td>@Html.DisplayFor(model => model.maTinTuc)</td>
+        </tr>
+        <tr>
+            <td>Tiêu Đề</td>
+            <td>@Html.DisplayFor(model => model.tieuDe)</td>
+        </tr>
+        <tr>
+            <td>Nội Dung</td>
+            <td>@Html.DisplayFor(model => model.noiDung)</td>
+        </tr>
+        <tr>
+            <td>Hình Ảnh</td>
+            <td>@Html.DisplayFor(model => model.hinhAnh)</td>
+        </tr>
+        <tr>
+            <td>Ngày Đăng</td>
+            <td>@Html.DisplayFor(model => model.ngayDang)</td>
+        </tr>
+
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay về", "Index")
+        </div>
+    }
+</div>

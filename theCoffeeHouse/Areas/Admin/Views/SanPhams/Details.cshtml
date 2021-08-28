@@ -1,0 +1,74 @@
+﻿@model theCoffeeHouse.Models.SanPham
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+<style>
+    table {
+        text-align: center;
+        border-top: 1px solid black;
+        vertical-align: middle;
+    }
+        table td {
+            text-align: center;
+            line-height:20px;
+        }
+</style>
+<h2>Chi tiết sản phẩm</h2>
+
+
+<div>
+    <h4></h4>
+    <table class="table">
+        <tr>
+            <td width="200px">Mã Sản Phẩm</td>
+            <td>@Html.DisplayFor(model => model.maSanPham)</td>
+        </tr>
+        <tr>
+            <td>Tên Sản Phẩm</td>
+            <td>            @Html.DisplayFor(model => model.tenSanPham)</td>
+        </tr>
+        <tr>
+            <td>Loại Sản Phẩm</td>
+            <td>            @Html.DisplayFor(model => model.LoaiSanPham.loaiSanPham1)</td>
+        </tr>
+        <tr>
+            <td>Giới Thiệu</td>
+            <td>             @Html.DisplayFor(model => model.gioiThieu)</td>
+        </tr>
+        <tr>
+            <td>Mô Tả</td>
+            <td>            @Html.DisplayFor(model => model.moTa)</td>
+        </tr>
+        <tr>
+            <td >Giới Thiệu Chi Tiết</td>
+            <td>            @Html.DisplayFor(model => model.gioiThieuChiTiet)</td>
+        </tr>
+        <tr>
+            <td>Đơn Giá</td>
+            <td>            @Html.DisplayFor(model => model.donGia)</td>
+        </tr>
+        <tr>
+            <td>Hàng Mới</td>
+            <td>            @Html.DisplayFor(model => model.hangMoi)</td>
+        </tr>
+        <tr>
+            <td>Hàng Mới</td>
+            <td>@Html.DisplayFor(model => model.hangNong)</td>
+        </tr>
+        <tr>
+            <td>Hàng Sale</td>
+            <td>            @Html.DisplayFor(model => model.hangSale)</td>
+        </tr>
+        <tr>
+            <td>Hình Ảnh</td>
+            <td>            @Html.DisplayFor(model => model.hinhAnh)</td>
+        </tr>
+    </table>
+
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.maSanPham }) |
+    @Html.ActionLink("Quay về", "Index")
+</p>

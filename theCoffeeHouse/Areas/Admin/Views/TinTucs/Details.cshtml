@@ -1,0 +1,53 @@
+﻿@model theCoffeeHouse.Models.TinTuc
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Chi tiết</h2>
+
+<style>
+    table {
+        text-align: center;
+        border-top: 1px solid black;
+    }
+
+        table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+</style>
+
+
+
+<div>
+    <h4>Nội dung</h4>
+    <table class="table">
+        <tr>
+            <td width="100px">Mã Tin Tức</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Tiêu Đề</td>
+            <td>@Html.DisplayFor(model => model.tieuDe)</td>
+        </tr>
+        <tr>
+            <td>Nội Dung</td>
+            <td>@Html.DisplayFor(model => model.noiDung)</td>
+        </tr>
+        <tr>
+            <td>Hình Ảnh</td>
+            <td>@Html.DisplayFor(model => model.hinhAnh)</td>
+        </tr>
+        <tr>
+            <td>Ngày Đăng</td>
+            <td>@Html.DisplayFor(model => model.ngayDang)</td>
+        </tr>
+
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.maTinTuc }) |
+    @Html.ActionLink("Quay về", "Index")
+</p>

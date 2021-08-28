@@ -1,0 +1,63 @@
+﻿@model theCoffeeHouse.Models.LoaiSanPham
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+<style>
+
+
+    .link_button {
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+        background: #ffa128;
+        color: white;
+        padding: 8px 12px;
+        text-decoration: none;
+    }
+</style>
+<h2>Chỉnh sửa</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Loại sản phẩm</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.maLoai)
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.loaiSanPham1, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <label class="control-label col-md-2">Loại Sản Phẩm</label> 
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.loaiSanPham1, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.loaiSanPham1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.gioiThieu, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <label class="control-label col-md-2">Giới Thiệu</label>
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.gioiThieu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.gioiThieu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-default" />
+                <a class="link_button" href="@Url.Action("Index", "LoaiSanPhams")"><i class="mdi mdi-undo-variant"></i>Quay Về</a>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+
+</div>

@@ -1,0 +1,99 @@
+﻿@model PagedList.IPagedList<theCoffeeHouse.Models.SanPham>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{ ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml"; }
+<style>
+
+    table {
+        text-align: center;
+    }
+</style>
+<h2>Danh sách sản phẩm</h2>
+
+<p>
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+<br />
+@using (Html.BeginForm())
+{
+<p>
+    Tìm mặt hàng: @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+    <input type="submit" value="Tìm" />
+</p>}
+<table class="table">
+    <tr>
+        <th>
+            STT
+        </th>
+        <th style="width:70px">
+            @Html.ActionLink("Mã sản phẩm", "Index", new { sortOrder = ViewBag.SapXepMa, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th style="width:70px;">
+            @Html.ActionLink("Tên sản phẩm", "Index", new { sortOrder = ViewBag.SapXepTen, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th style="width:200px">
+            Mô Tả
+        </th>
+
+        <th style="width:100px">
+            @Html.ActionLink("Đơn giá", "Index", new { sortOrder = ViewBag.SapXepGia, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Hình Ảnh
+        </th>
+        <th style="width:60px">
+            Loại Sản Phẩm
+        </th>
+        <th>
+            Chức Năng
+        </th>
+    </tr>
+    @{ var c = 0;
+        foreach (var item in Model)
+        {
+            c++;
+<tr>
+    <td>
+        @c
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.maSanPham)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tenSanPham)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.moTa)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.donGia)
+    </td>
+
+    <td>
+        @{ String ImagePath = "~/images/" + item.hinhAnh; }
+        <img src="@Url.Content(ImagePath)" width="150" class="img-thumbnail" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LoaiSanPham.loaiSanPham1)
+    </td>
+    <td>
+        <a href="@Url.Action("Edit", "SanPhams", new { id = item.maSanPham })"><i class="mdi mdi-wrench-outline"></i></a>
+        <a href="@Url.Action("Details", "SanPhams", new { id = item.maSanPham })"><i class="mdi mdi-open-in-new"></i></a>
+        <a href="@Url.Action("Delete", "SanPhams", new { id = item.maSanPham })"><i class="mdi mdi-delete-outline"></i></a>
+    </td>
+</tr> } }
+
+
+</table>
+<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new
+{
+    page,
+    sortOrder = ViewBag.CurrentSort,
+    currentFilter = ViewBag.CurrentFilter
+}))

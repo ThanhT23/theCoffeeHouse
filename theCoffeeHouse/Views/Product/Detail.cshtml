@@ -1,0 +1,193 @@
+﻿@model theCoffeeHouse.Models.SanPham
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+@{ 
+    var ListRelatedProducts = ViewBag.RelatedProducts as IEnumerable<theCoffeeHouse.Models.SanPham>;
+}
+
+<style>
+    /* ==============Detail Product================= */
+    .product-detail {
+        margin-top: 50px;
+    }
+
+        .product-detail .container {
+            display: flex;
+        }
+
+            .product-detail .container .detail-form {
+                padding: 90px 60px 0px 60px;
+            }
+
+                .product-detail .container .detail-form .info .name {
+                    font-size: 30px;
+                    text-transform: capitalize;
+                }
+
+                .product-detail .container .detail-form .info .intro {
+                    font-size: 16px;
+                    margin-top: 30px;
+                    line-height: 200%;
+                }
+
+                .product-detail .container .detail-form .info .detail-btn {
+                    font-size: 20px;
+                    padding: 20px 40px 20px 40px;
+                    margin-top: 30px;
+                    background-color: #ffaf4e;
+                    color: rgb(0, 0, 0);
+                }
+
+                    .product-detail .container .detail-form .info .detail-btn:hover {
+                        background-color: #F7941D;
+                        color: white;
+                    }
+
+                .product-detail .container .detail-form .info .price {
+                    color: #F7941D;
+                    font-size: 30px;
+                    margin-top: 30px;
+                }
+
+                .product-detail .container .detail-form .info .phone {
+                    margin-top: 20px;
+                    font-size: 18px;
+                }
+
+    /* ==============Detail Product================= */
+    /* ================content detail product============== */
+    .content-detail {
+        margin-top: 150px;
+        background-color: rgb(243, 243, 243);
+        padding: 120px 250px 120px 250px;
+    }
+
+        .content-detail .container .content {
+            text-align: center;
+        }
+
+            .content-detail .container .content .descript {
+                font-size: 30px;
+                line-height: 200%;
+                text-transform: capitalize;
+            }
+
+            .content-detail .container .content .detail-intro {
+                font-size: 18px;
+                line-height: 230%;
+            }
+
+
+    /* ================content detail product============== */
+
+
+</style>
+
+<div class="product-detail">
+    <div class="container">
+        <div class="image">
+            <img src="~/images/@Model.hinhAnh" style="width: 1500px; height: 580px;">
+        </div>
+        <form class="detail-form">
+
+            <div class="info">
+                <h class="name"><b>@Model.tenSanPham</b></h>
+                <p class="intro">@Model.gioiThieu</p>
+                <p class="price" style="padding-bottom:40px">@Model.donGia<span>Đ</span></p>
+                <a class="detail-btn"  href="@Url.Action("AddItem", "Cart", new { productId = Model.maSanPham , quantity = 1 })">MUA NGAY</a>
+                <p class="phone">Gọi giao hàng tận nơi<span style="color:#F7941D;"> 1800 6936</span></p>
+
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<div class="content-detail">
+    <div class="container">
+        <div class="content">
+            <p class="descript"><b>@Model.moTa</b></p>
+            <p class="detail-intro">
+               @Model.gioiThieuChiTiet
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="product-area section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>CÓ THỂ BẠN THÍCH</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-12">
+                <div class="product-info">
+
+                    <div class="tab-content" id="myTabContent">
+                        <!-- Start Single Tab -->
+                        <div class="tab-pane fade show active" id="man" role="tabpanel">
+
+                            <div class="tab-single">
+
+                                <div class="row">
+                                    @foreach (var item in ListRelatedProducts)
+                                    {
+                                        <div class="col-xl-3 col-lg-4 col-md-4 col-12">
+                                            <div class="single-product">
+                                                <div class="product-img">
+                                                    <a href="@Url.Action("Detail", "Product", new { id = item.maSanPham})">
+                                                        <img class="default-img"
+                                                             src="~/images/@item.hinhAnh" alt="#">
+                                                        <img class="hover-img" src=""
+                                                             alt="#">
+                                                    </a>
+                                                    <div class="button-head">
+                                                        <div class="product-action">
+                                                            <a title="Compare" href="@Url.Action("QuickAddItem", "Cart", new { productId = item.maSanPham , quantity = 1 })">
+                                                                <i class="fa fa-shopping-cart"></i><span>
+                                                                    Thêm Vào Giỏ
+                                                                </span>
+                                                            </a>
+                                                            <a title="Wishlist" href="#">
+                                                                <i class="fa fa-heart"></i><span>
+                                                                    Yêu Thích
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="product-action-2">
+                                                            <a title="Add to cart" href="@Url.Action("AddItem", "Cart", new { productId = item.maSanPham , quantity = 1 })">MUA NGAY</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product-content">
+                                                    <h3><a href="product-details.html">@item.tenSanPham</a></h3>
+                                                    <div class="product-price">
+                                                        <span>@item.donGia</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

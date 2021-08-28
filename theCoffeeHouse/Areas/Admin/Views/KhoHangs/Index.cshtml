@@ -1,0 +1,85 @@
+﻿
+
+@model PagedList.IPagedList<theCoffeeHouse.Models.KhoHang>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{ ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml"; }
+
+<h2>Danh sách hàng</h2>
+<style>
+
+    table {
+        text-align: center;
+    }
+</style>
+
+<p>
+    @Html.ActionLink("Thêm Mới", "Create")
+</p>
+<br />
+@using (Html.BeginForm())
+{
+<p>
+    Tìm mặt hàng: @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+    <input type="submit" value="Tìm" />
+</p>}
+<table class="table">
+    <tr>
+        <th>
+            STT
+        </th>
+        <th>
+            Mã Sản Phẩm
+        </th>
+        <th>
+            @Html.ActionLink("Tên sản phẩm", "Index", new { sortOrder = ViewBag.SapXepTen, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Số Lượng Tồn
+        </th>
+        <th>
+            @Html.ActionLink("Giá nhập", "Index", new { sortOrder = ViewBag.SapXepGia, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Ghi Chú
+        </th>
+    </tr>
+    @{ var c = 0;
+        foreach (var item in Model)
+        {
+            c++;
+<tr>
+    <td>@c</td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SanPham.maSanPham)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tenSanPham)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.soLuongTon)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.giaNhap)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ghiChu)
+    </td>
+    <td>
+        <a href="@Url.Action("Edit", "KhoHangs", new { id = item.maSanPham })"><i class="mdi mdi-wrench-outline"></i></a>
+        <a href="@Url.Action("Details", "KhoHangs", new { id = item.maSanPham })"><i class="mdi mdi-open-in-new"></i></a>
+        <a href="@Url.Action("Delete", "KhoHangs", new { id = item.maSanPham })"><i class="mdi mdi-delete-outline"></i></a>
+    </td>
+</tr> } }
+
+
+</table>
+<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new
+{
+    page,
+    sortOrder = ViewBag.CurrentSort,
+    currentFilter = ViewBag.CurrentFilter
+}))

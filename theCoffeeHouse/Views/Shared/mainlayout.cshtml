@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@Page.Title</title>
+    @RenderSection("head", required: false)
+    <!-- Meta Tag -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name='copyright' content=''>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Title Tag  -->
+    <title>The Coffee House</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="~/images/headlogo.png">
+    <!-- Web Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+          rel="stylesheet">
+    <!-- StyleSheet -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.css">
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="~/Content/css/magnific-popup.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Content/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/Loginfonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/Loginfonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!-- Fancybox -->
+    <link rel="stylesheet" href="~/Content/css/jquery.fancybox.min.css">
+    <!-- Themify Icons -->
+    <link rel="stylesheet" href="~/Content/css/themify-icons.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="~/Content/css/niceselect.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="~/Content/css/animate.css">
+    <!-- Flex Slider CSS -->
+    <link rel="stylesheet" href="~/Content/css/flex-slider.min.css">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="~/Content/css/owl-carousel.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" href="~/Content/css/slicknav.min.css">
+    <!-- Eshop StyleSheet -->
+    <link rel="stylesheet" href="~/Content/css/reset.css">
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <link rel="stylesheet" href="~/Content/css/responsive.css">
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+    <script>
+        $(document).ready(function () {
+            $("#formButton").click(function () {
+                $("#form1").toggle();
+            });
+        });
+    </script>
+    <style>
+        .form{
+            display:none;
+            
+            margin-left:700px;
+        }
+            .form form {
+                
+            }
+    </style>
+
+</head>
+<body class="js">
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-icon">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- End Preloader -->
+    <!-- Header -->
+    <header class="header shop">
+        <div class="topbar">
+            <div class="container">
+                <div class="row">
+                    <div class="logo">
+                        <a href="layout.html"><img src="~/images/logo.png" width="300px" style="padding-bottom: 15px; " alt="logo"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header Inner -->
+        <div class="header-inner">
+            <div class="container">
+                <div class="cat-nav-head">
+                    <div class="row">
+                        <div class="col-lg-9 col-12">
+                            <div class="menu-area">
+                                <!-- Main Menu -->
+                                <nav class="navbar navbar-expand-lg">
+                                    <div class="navbar-collapse">
+                                        <div class="nav-inner">
+                                            <ul class="nav main-menu menu navbar-nav">
+                                                <li class="#"><a href="@Url.Action("Index", "Product", new { id = 0})" style="font-size: 13px; padding-left: 3px; padding-right: 3px;">SẢN PHẨM</a></li>
+                                                <li>
+                                                    <a href="@Url.Action("cauchuyenthuonghieu", "Pages")" style="font-size: 13px; padding-left: 3px;padding-right: 3px;">
+                                                        CÂU CHUYỆN THƯƠNG HIỆU
+                                                    </a>
+                                                    <ul class="dropdown" style="width:250px;">
+                                                        <li><a href="@Url.Action("cauchuyenthuonghieu", "Pages")">VỀ THE COFFEE HOUSE</a></li>
+                                                        <li><a href="">TRÁCH NHIỆM CỘNG ĐỒNG</a></li>
+                                                        <li><a href="">THÔNG CÁO BÁO CHÍ</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="@Url.Action("cuahang", "Pages")" style="font-size: 13px; padding-left: 3px;padding-right: 3px;">CỬA HÀNG</a></li>
+                                                <li><a href="#" style="font-size: 13px; padding-left: 3px;padding-right: 3px;">TUYỂN DỤNG</a></li>
+                                                <li><a href="@Url.Action("Index", "News")" style="font-size: 13px; padding-left: 3px;padding-right: 3px;">TIN TỨC</a></li>
+                                                <li><a href="" style="font-size: 13px; padding-left: 3px;padding-right: 3px;">ƯU ĐÃI</a></li>
+                                                <li>
+                                                    <a href="@Url.Action("hanhtrinh", "Pages")" style="font-size: 13px; padding-left: 3px;padding-right: 3px;">CHUYỆN CÀ PHÊ</a>
+                                                    <ul class="dropdown" style="width:330px">
+                                                        <li>
+                                                            <a href="@Url.Action("hanhtrinh", "Pages")">Hành trình từ nông trại đến ly cà phê</a>
+                                                        </li>
+                                                        <li><a href="">Hạt cà phê the coffee house</a></li>
+                                                        <li><a href="">Nghệ thuật pha chế</a></li>
+                                                        <li><a href="">Workshop cà phê</a></li>
+                                                        <li><a href="">Truy xuất nguồn gốc</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <button type="button" id="formButton" style="border:none; padding-left: 3px;padding-right: 3px; margin-top:19px; background-color:black; color:white "><i style="font-size: 23px;" class="fa fa-search"></i></button>
+
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                </nav>
+
+
+                                <!--/ End Main Menu -->
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-12">
+                            <div class="right-bar">
+                                @if (Session["CartSession"] != null)
+                                {
+                                    <div class="sinlge-bar shopping">
+                                        <a href="@Url.Action("Index", "Cart")" class="single-icon">
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="sinlge-bar shopping">
+                                        <a href="" class="single-icon">
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </a>
+                                    </div>
+                                }
+
+                                @if (Session["UserName"] != null)
+                                {
+                                    <div class="sinlge-bar shopping">
+                                        <a href="#" class="single-icon">
+                                            <i class="fa fa-user-circle-o"></i> @Session["UserName"]
+                                        </a>
+                                        <!-- Shopping Item -->
+                                        <div class="shopping-item">
+                                            <div class="bottom">
+                                                <a href="@Url.Action("Index", "Order")" class="btn animate">Đơn Hàng Vừa Đặt</a>
+                                            </div>
+                                            @{
+                                                if (Session["UserName"] != null)
+                                                {
+                                                    <div class="bottom">
+                                                        <a href="@Url.Action("Index", "User")" class="btn animate">Thông Tin Cá Nhân</a>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="bottom">
+                                                        <a href="@Url.Action("Login", "Account")" class="btn animate">Thông Tin Cá Nhân</a>
+                                                    </div>
+                                                }
+
+                                            }
+                                            <div class="bottom">
+                                                <a href="@Url.Action("Logout", "Account")" class="btn animate">Thoát</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                }
+                                else
+                                {
+
+                                    <div class="sinlge-bar">
+                                        <a href="@Url.Action("Login", "Account")" class="single-icon" style="font-size: 12px;">
+                                            <i class=""
+                                               aria-hidden="true"></i>Đăng Nhập
+                                        </a>
+                                    </div>
+                                }
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Header Inner -->
+    </header>
+    @using (Html.BeginForm("Index", "Search", FormMethod.Post, new { @class = "form", @id = "form1" }))
+    {
+        <label for="a">Tin Tức</label>
+        <input id="a" type="radio" name="type" value="tin" />
+        <label for="a">Sản Phẩm</label>
+        <input id="a" type="radio" name="type" value="sanpham" /><br />
+        <input type="search" name="search" /><br />
+        <input type="submit" value="Tìm" style="width:50px; height:30px" />
+    }
+    <!--/ End Header -->
+
+
+    @RenderBody()
+
+    <!-- Start Footer Area -->
+    <footer class="footer">
+        <!-- Footer Top -->
+        <div class="footer-top section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer about">
+                            <div class="logo">
+                                <a href=""><img src="" alt="#" ></a>
+                            </div>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer links">
+                            <h4>ABOUT</h4>
+                            <ul>
+                                <li><a href="#">Về Chúng Tôi</a></li>
+                                <li><a href="#">Hạt Cà Phê The Coffee House</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Cơ Hội Nghề Nghiệp</a></li>
+                                <li><a href="#">Cửa Hàng</a></li>
+                            </ul>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer links">
+                            <h4>Always-on Support</h4>
+                            <ul>
+                                <li><a href="#">Delivery 1800 6936 (07:00-21:00)</a></li>
+                                <li><a href="#">Support 028.71.087.088 (07:00-21:00)</a></li>
+                                <li><a href="#">Address</a></li>
+
+                            </ul>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer social">
+                            <h4>Delivery</h4>
+                            <!-- Single Widget -->
+                            <div class="contact">
+                                <ul>
+                                    <li>Shipping methods</li>
+                                    <li>
+                                        Payment
+                                    </li>
+                                    <li>Cash voucher</li>
+                                    <li>Exchange</li>
+                                </ul>
+                            </div>
+                            <!-- End Single Widget -->
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook "></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-flickr"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Footer Top -->
+        <div class="copyright">
+            <div class="container">
+                <div class="inner">
+                    <div class="row">
+                        <div class="col-lg-6 col-12">
+                            <div class="left">
+                                <p>
+                                    Copyright © 2020 <a href="http://www.wpthemesgrid.com"
+                                                        target="_blank">Wpthemesgrid</a> - All Rights Reserved.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <div class="right">
+                                <img src="images/payments.png" alt="#">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- /End Footer Area -->
+    <!-- Jquery -->
+    <script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/js/jquery-migrate-3.0.0.js"></script>
+    <script src="~/Content/js/jquery-ui.min.js"></script>
+    <!-- Popper JS -->
+    <script src="~/Content/js/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <!-- Color JS -->
+    <script src="~/Content/js/colors.js"></script>
+    <!-- Slicknav JS -->
+    <script src="~/Content/js/slicknav.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="~/Content/js/owl-carousel.js"></script>
+    <!-- Magnific Popup JS -->
+    <script src="~/Content/js/magnific-popup.js"></script>
+    <!-- Waypoints JS -->
+    <script src="~/Content/js/waypoints.min.js"></script>
+    <!-- Countdown JS -->
+    <script src="~/Content/js/finalcountdown.min.js"></script>
+    <!-- Nice Select JS -->
+    <script src="~/Content/js/nicesellect.js"></script>
+    <!-- Flex Slider JS -->
+    <script src="~/Content/js/flex-slider.js"></script>
+    <!-- ScrollUp JS -->
+    <script src="~/Content/js/scrollup.js"></script>
+    <!-- Onepage Nav JS -->
+    <script src="~/Content/js/onepage-nav.min.js"></script>
+    <!-- Easing JS -->
+    <script src="~/Content/js/easing.js"></script>
+    <!-- Active JS -->
+    <script src="~/Content/js/active.js"></script>
+</body>
+</html>

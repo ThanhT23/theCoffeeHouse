@@ -1,0 +1,63 @@
+﻿@model PagedList.IPagedList<theCoffeeHouse.Models.LoaiSanPham>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{ ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml"; }
+
+<style>
+    table {
+        text-align: center;
+    }
+
+        table a {
+            font-size: 20px;
+        }
+</style>
+<h2>Loại Sản Phẩm</h2>
+<p>
+    @Html.ActionLink("Thêm Mới", "Create")
+</p>
+<br />
+@using (Html.BeginForm())
+{
+<p>
+    Tìm loại sản phẩm: @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+    <input type="submit" value="Tìm" />
+</p>}
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Tên loại", "Index", new { sortOrder = ViewBag.SapXepTen, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Giới Thiệu
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.loaiSanPham1)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.gioiThieu)
+    </td>
+    <td>
+        <a href="@Url.Action("Edit", "LoaiSanPhams", new { id = item.maLoai })"><i class="mdi mdi-wrench-outline"></i></a>
+        <a href="@Url.Action("Details", "LoaiSanPhams", new { id = item.maLoai })"><i class="mdi mdi-open-in-new"></i></a>
+        <a href="@Url.Action("Delete", "LoaiSanPhams", new { id = item.maLoai })"><i class="mdi mdi-delete-outline"></i></a>
+    </td>
+</tr>}
+
+</table>
+<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new
+{
+    page,
+    sortOrder = ViewBag.CurrentSort,
+    currentFilter = ViewBag.CurrentFilter
+}))

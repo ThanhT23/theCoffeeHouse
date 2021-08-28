@@ -1,0 +1,49 @@
+﻿@model theCoffeeHouse.Models.TaiKhoan
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Xóa</h2>
+<style>
+    table {
+        text-align: center;
+        border-top: 1px solid black;
+        vertical-align: middle;
+    }
+
+        table td {
+            text-align: center;
+            line-height: 20px;
+        }
+</style>
+<h3>Bạn có chắc chắn muốn xóa tài khoản này không?</h3>
+<div>
+    <h4>Thông tin</h4>
+
+    <table class="table">
+        <tr>
+            <td width="200px">Tên Đăng Nhập</td>
+            <td>@Html.DisplayFor(model => model.tenDangNhap)</td>
+        </tr>
+        <tr>
+            <td>Mật Khẩu</td>
+            <td>@Html.DisplayFor(model => model.matKhau)</td>
+        </tr>
+        <tr>
+            <td>Loại</td>
+            <td>@Html.DisplayFor(model => model.loai)</td>
+        </tr>
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Quay về", "Index")
+        </div>
+    }
+</div>

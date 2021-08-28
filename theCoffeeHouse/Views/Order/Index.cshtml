@@ -1,0 +1,73 @@
+﻿@model List<theCoffeeHouse.Models.HoaDon>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th {
+        text-align: center;
+        padding: 8px;
+        background-color: #F7941D;
+        color: aliceblue;
+    }
+
+    td {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+        height: 200px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+<div class="main-order">
+
+
+    <div class="shopping-cart section">
+        <div class="container" style="width:1060px">
+            <form style="width:200px">
+                <div class="search-cart" style="display: flex;">
+                    <button type="submit" class="searchButton" style="background-color:rgb(255, 255, 255);">
+                        <i class="fa fa-search" style="width:30px;height: 30px; font-size: 20px;padding-top: 4px;"></i>
+                    </button>
+                    <input class="search-cart-input" name="search" type="text" placeholder="Tìm Kiếm Sản Phẩm" style="width: 1000px;">
+                </div>
+            </form>
+
+            <table>
+                <tr>
+                    <th>Sản Phẩm</th>
+                    <th>Thời Gian</th>
+                    <th>Số Lượng</th>
+                    <th>Thành Tiền</th>
+                    <th>Hình thức</th>
+                    <th>Tình Trạng</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td></td>
+                        <td>@item.ngayBan</td>
+                        <td>@item.tongSoLuong</td>
+                        <td>@item.thanhTien</td>
+                        <td>@item.hinhThucThanhToan</td>
+                        <td class="" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i>Hủy Đơn</a></td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+
+    </div>
+
+
+
+</div>

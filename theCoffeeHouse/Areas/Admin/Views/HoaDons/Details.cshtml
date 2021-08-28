@@ -1,0 +1,119 @@
+﻿@model theCoffeeHouse.Models.HoaDon
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+@{ 
+    var ListCTHD = ViewBag.ListCTHD as IEnumerable<theCoffeeHouse.Models.ChiTietHoaDon>;
+    var sanpham = ViewBag.SanPham as theCoffeeHouse.Models.SanPham;
+}
+<style>
+    table {
+        text-align: center;
+        border-top: 1px solid black;
+    }
+
+        table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+</style>
+<h2>Chi tiết hóa đơn</h2>
+
+<div>
+    <h4></h4>
+    <table class="table">
+        <tr>
+            <td>Mã Đơn Hàng</td>
+            <td>@Html.DisplayFor(model => model.maHoaDon)</td>
+        </tr>
+        <tr>
+            <td>Mã Khách Hàng</td>
+            <td>@Html.DisplayFor(model => model.maKhachHang)</td>
+        </tr>
+        <tr>
+            <td>Tên Đăng Nhập</td>
+            <td>@Html.DisplayFor(model => model.ThongTinKhachHang.tenDangNhap)</td>
+        </tr>
+        <tr>
+            <td>Thời Gian</td>
+            <td>@Html.DisplayFor(model => model.ngayBan)</td>
+        </tr>
+        <tr>
+            <td>Tổng Số Lượng</td>
+            <td>@Html.DisplayFor(model => model.tongSoLuong)</td>
+        </tr>
+        <tr>
+            <td>Giảm Giá</td>
+            <td>@Html.DisplayFor(model => model.giamGia)</td>
+        </tr>
+        <tr>
+            <td>Thành Tiền</td>
+            <td>@Html.DisplayFor(model => model.thanhTien)</td>
+        </tr>
+        <tr>
+            <td>Thanh Toán</td>
+            <td>@Html.DisplayFor(model => model.hinhThucThanhToan)</td>
+        </tr>
+    </table>
+    <h2>Chi Tiết Đơn Hàng</h2>
+    <table class="table">
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                Mã Sản Phẩm
+            </th>
+            <th>
+                Tên Sản Phẩm
+            </th>
+            <th>
+                Số Lượng
+            </th>
+            <th>
+                Đơn Giá
+            </th>
+            <th>
+                Phí Vận Chuyển
+            </th>
+        </tr>
+
+        @{
+            var c = 0;
+            foreach (var item in ListCTHD)
+            {
+                c++;
+        <tr>
+            <td>
+                @c
+            </td>
+
+            <td>
+                @item.maSanPham
+            </td>
+            <td>
+                @sanpham.tenSanPham
+            </td>
+            <td>
+                @item.soLuong
+            </td>
+            <td>
+                @item.donGia
+            </td>
+            <td>
+                25000
+            </td>
+        </tr>
+            }
+
+        }
+
+    </table>
+
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.maHoaDon }) |
+    @Html.ActionLink("Trở về", "Index")
+</p>
