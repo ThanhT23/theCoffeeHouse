@@ -29,15 +29,13 @@ namespace theCoffeeHouse.Models.DAO
             {
                 if (result.loai == "admin")//la admin, chuyen huong den admin page
                 {
-                    return 3;
-                }
-                else//ko phai admin, la user
-                {
                     if (result.matKhau == passWord)
-                        return 1;//mat khau, tai khoan ton tai => sesion
+                        return 3;//mat khau, tai khoan ton tai => sesion
                     else
                         return -2;//mat khau sai hoac khong ton tai
+
                 }
+                else return 0;
             }
 
         }
